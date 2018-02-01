@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml"
+    xmlns:h="http://java.sun.com/jsf/html"
+    xmlns:f="http://java.sun.com/jsf/core">
+    <head>
+        <title>Sent Folder</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+        <link href="WebmailStyle.css" rel="stylesheet" type="text/css"/>
+        <script>
+            function myFunction() {
+                if(!window.location.hash) {
+                    window.location = window.location + '#loaded';
+                    window.location.reload();
+                }
+            }
+        </script>
+    </head>
+    <h:body onload="myFunction()">
+        <center class="emailDisplay">
+           <h:form>   
+               <h2 class="displayName">Welcome, #{emailAccount.name}</h2>
+                <h1 class="displayPageTitle">Sent Folder</h1>               
+            <h:dataTable id="sentbox" 
+                         rows ="#{emailAccount.sentEmails.size()}" 
+                         value="#{emailAccount.sentEmails}" var="emailObj" class="emailDisplayBox">  
+                
+                
+                <h:column>  
+                    <h:commandLink class="emailsList" value="#{emailObj.date}       #{emailObj.name}         #{emailObj.title}" action="#{emailAccount.getSentEmailIDtoView(emailObj.id)}"/>
+                </h:column>
+                    
+                 
+            </h:dataTable>  
+            
+             <div class='container'>                
+                <h:link outcome="welcome.xhtml" class="displaylink">Return</h:link>
+            </div>
+        </h:form>
+        </center>
+    </h:body>
+</html>

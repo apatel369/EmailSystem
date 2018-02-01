@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html">
+    <head>
+        <title>Login Successful</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+        <link rel="stylesheet" type="text/css" href="WebmailStyle.css"/>
+        <script>
+            function myFunction() {
+                if(!window.location.hash) {
+                    window.location = window.location + '#loaded';
+                    window.location.reload();
+                }
+            }
+        </script>
+    </head>
+    <body onload="myFunction()">
+        <h2></h2>
+        <center class='emailDisplay'>
+        <h:form>            
+            <h2 class="displayName">Welcome, #{emailAccount.name}</h2>
+            <h1 class="displayPageTitle">Inbox</h1>
+            <h:dataTable id="inbox" 
+                         rows ="#{emailAccount.emails.size()}" 
+                         value="#{emailAccount.emails}" var="emailObj" class="emailDisplayBox">  
+                
+                <h:column>  
+                    <h:commandLink class="emailsList" value="#{emailObj.date}       #{emailObj.name}         #{emailObj.title}" action="#{emailAccount.getEmailIDtoView(emailObj.id)}"/>
+                </h:column>
+                    
+                 
+            </h:dataTable> 
+            <p>
+                <h:commandButton id="sentFolder" value="Sent Folder"
+                                 action="#{emailAccount.sentEmails()}" styleClass="optionButton"/>
+            </p>
+            
+            <p>
+                <h:commandButton id="Compose" value="Compose"
+                                 action="compose.xhtml" styleClass="optionButton"/>
+            </p>
+            
+            <p>
+                <h:commandButton id="trash" value="Trash Folder"
+                                 action="#{emailAccount.trashEmailsFolder()}" styleClass="optionButton"/>
+            </p>
+            
+            <div class='container'>                
+                <h:link outcome="#{login.logOut()}" class="displaylink">Logout</h:link>
+            </div>
+        </h:form>
+        </center>
+    </body> 
+</html>

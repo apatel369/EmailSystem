@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+    <head>
+        <title>TO DO supply a title</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+        <link rel="stylesheet" type="text/css" href="WebmailStyle.css"/>
+    </head>
+    <body>
+          <center class='emailDisplay'>
+            <h:form>
+                <h2 class="displayName">Welcome, #{emailAccount.name}</h2>
+                <h1 class="displayPageTitle">Reply Email</h1>
+                <div class="emailDisplayBox">
+                    <label Class='displayEmail'><b>To: </b>#{emailAccount.readSelectedSentEmail().name}</label><br/>
+                    <label Class='displayEmail'><b>Subject: </b>#{emailAccount.readSelectedSentEmail().title}</label><br/>
+                    <label Class='displayEmail'><b>Body(Old Message): </b></label><br/>
+                    <label Class='displayEmail'><h:outputText value="${emailAccount.readSelectedSentEmail().content}" escape="false"/></label>
+                </div>
+               
+
+                <p><label Class='displayText'><b>Reply Message: </b></label><br/>
+                    <h:inputTextarea id="body" rows="8" cols="100" value="#{emailAccount.content}">
+                    </h:inputTextarea>
+                </p><br/>
+                <label Class='displayText'>
+                    <h:selectBooleanCheckbox id="notification" value="#{emailAccount.notification}" >
+                    </h:selectBooleanCheckbox>
+                    <b>check if you Want Notification when email is read by a recipient</b>
+                </label>
+                <p>
+                    <h:commandButton id="submit" value="Send Email"
+                                     action = "replySentConfirmation.xhtml" styleClass="optionButton"/>
+                </p>
+                <div class='container'>                
+                    <h:link outcome="viewSentEmail.xhtml" class="displaylink">Return</h:link>
+                </div>
+                
+            </h:form>
+            
+        </center>
+    </body>
+</html>

@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html">
+    <head>
+        <title>Confirmation</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+        <link rel="stylesheet" type="text/css" href="WebmailStyle.css"/>
+    </head>
+    <body>        
+        <center class='emailDisplay'>
+        <h:form>
+            <h2 class="displayName">Welcome, #{emailAccount.name}</h2>
+            <h1 class="displayPageTitle">Confirmation</h1>
+            <h2 class="emailDisplayBox">#{emailAccount.forwardInboxEmail()}</h2>
+            
+            <div class='container'>                
+                <h:link outcome="welcome.xhtml" class="displaylink">Return</h:link>
+            </div>
+        </h:form>
+        </center>
+    </body>
+</html>

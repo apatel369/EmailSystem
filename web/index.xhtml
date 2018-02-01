@@ -1,0 +1,50 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:a="http://xmlns.jcp.org/jsf/passthrough">
+    <h:head>
+        <title>UHCL Webmail System</title>
+        <link rel="stylesheet" type="text/css" href="WebmailStyle.css"/>
+        
+    </h:head>
+    <h:body>
+        <center class="signupDisplay">
+            <h:graphicImage value="SignupAd.jpg" height="350" width="600" style="border-radius: 4px;"/>
+            <h4>To Enjoy above cool Features of Email, sign up below </h4>
+            <div class='container'>
+                <h:link outcome="register.xhtml" class="displaylink">
+                Create a new Email Account
+            </h:link><br/></div>
+        </center>
+        <center class="loginDisplay">
+        <h:form>
+            
+            <br/><br/>
+            <h:graphicImage  value="email.png" height="120" width="120" style="border-radius: 50%;"/>
+           
+            <p><label Class='displayText'><b>Username</b></label><br/>
+                <h:inputText id="username" required="true" a:placeholder="Enter Username" requiredMessage="The username field cannot be empty"
+                             value="#{login.id}"
+                             validatorMessage="Account ID must contain letter and digit and it's length must be between 3 and 10.">
+                    <f:validateRegex pattern="(^(?=.*[0-9]+.*)(?=.*[a-zA-Z]+.*)[0-9a-zA-Z]{3,10}$)"/>
+                </h:inputText>
+            </p>    
+            <p><label Class='displayText'><b>Password</b></label><br/>
+                <h:inputSecret id="password" required="true" a:placeholder="Enter Password" requiredMessage="The password field cannot be empty"
+                             value="#{login.password}">
+                                 
+                </h:inputSecret>
+            </p>
+            
+            <p>
+                <h:commandButton id="submit" value="Login" 
+                                 action="#{login.login()}" styleClass="richButton"/>
+            </p>
+            
+        </h:form>
+            </center>
+    </h:body>
+</html>
+
